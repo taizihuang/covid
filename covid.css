@@ -1,0 +1,38 @@
+#container0 {
+    width: 90%;
+    height: 300px;
+    margin: 10 auto;
+}
+
+#container {
+    width: 90%;
+    height: 90%;
+    margin: 10 auto;
+}
+
+#container1 {
+    width: 90%;
+    height: 200px;
+    ;
+}
+
+#container2 {
+    width: 90%;
+    margin: 10 auto;
+}
+
+.highcharts-exporting-group,
+.highcharts-credits {
+    display: none;
+}
+
+h2,
+p {
+    padding-left: 10px;
+}
+
+body {
+    max-width: 400px;
+    margin: auto;
+    padding-bottom: 20px;
+}
