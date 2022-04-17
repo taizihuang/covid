@@ -2,6 +2,7 @@ import requests,json,datetime
 import pandas as pd
 from mako.template import Template
 
+
 def genHTML():
     s = """
     <!DOCTYPE HTML>
