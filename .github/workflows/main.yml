@@ -1,0 +1,30 @@
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+        
+jobs:
+    build:
+        runs-on: ubuntu-20.04
+        steps:
+          - uses: actions/checkout@v2
+          - uses: actions/setup-python@v2
+            with:
+              python-version: 3.x
+          - name: install dependencies
+            run: pip install --upgrade -r requirements.txt
+          - name: run script
+            run: |
+              git pull
+              python covid.py
+          - name: Sync files
+            uses: SamKirkland/FTP-Deploy-Action@4.3.0
+            with:
+              server: home.ustc.edu.cn
+              username: ${{ secrets.ftp_username }}
+              password: ${{ secrets.ftp_password }}
+              server-dir: ./public_html/covid/
+              exclude: |
+                **/.git*
+                **/.git*/**
+                **/node_modules/**
