@@ -1,4 +1,4 @@
-import requests,json,datetime,os
+import requests,json,datetime,os,time
 import pandas as pd
 from mako.template import Template
 
@@ -557,6 +557,7 @@ def genGroupbuy(df):
             f.write(groupBuy.render(groupBuy_li=groupBuy_li,category=list(df['团品']),t_min=t_min,t_max=t_max))
 
 os.environ['TZ'] = 'Asia/Shanghai'
+time.tzset()
 df1 = fetchSheet1()
 df2 = fetchSheet2()
 genCovid(df1)
