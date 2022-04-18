@@ -517,11 +517,12 @@ def genGroupbuy(df):
             borderColor: 'gray',
             pointWidth: 20,
             data: [
-                %for x,x2,y,leader,fill in groupBuy_li:
+                %for x,x2,y,color,leader,fill in groupBuy_li:
                 {
                 x: Date.UTC(2022, ${x[0]}, ${x[1]}),
                 x2: Date.UTC(2022, ${x2[0]}, ${x2[1]}),
                 y: ${y},
+                color: '${color}',
                 'leader': '${leader}',
                 partialFill: ${fill}
             },
@@ -537,18 +538,21 @@ def genGroupbuy(df):
         c.xAxis[0].setExtremes(Date.UTC(2022, ${t_min[0]}, ${t_min[1]}), Date.UTC(2022, ${t_max[0]}, ${t_max[1]}));
     });
     """)
-    groupBuy_li = []
-    for i in df.index:
-        leader = df.loc[i,'团长']
-        y = i
-        x = [df.loc[i,'团购日期'].month-1,df.loc[i,'团购日期'].day]
-        x2 = [df.loc[i,'到货日期'].month-1,df.loc[i,'到货日期'].day]
-        t = datetime.datetime(2022,datetime.datetime.today().month,datetime.datetime.today().day)
-        if df.loc[i,'到货日期']>t:
-            fill = round((t-df.loc[i,'团购日期']).days/(df.loc[i,'到货日期']-df.loc[i,'团购日期']).days,2)
-        else:
-            fill = 1
-        groupBuy_li.append((x,x2,y,leader,fill))
+    color_list = ['#f1ccb8','#f1f1b8','#b8f1ed','#b8f1cc','#e7dac9']
+        groupBuy_li = []
+        category = []
+        y = 0
+        for i in df.index:
+            leader = df.loc[i,'团长']
+            color = color_list[y % len(color_list)]
+            x = [df.loc[i,'团购日期'].month-1,df.loc[i,'团购日期'].day]
+            x2 = [df.loc[i,'到货日期'].month-1,df.loc[i,'到货日期'].day]
+            t = datetime.datetime(2022,datetime.datetime.today().month,datetime.datetime.today().day)
+            if df.loc[i,'到货日期']>=t:
+                fill = round((t-df.loc[i,'团购日期']).days/(df.loc[i,'到货日期']-df.loc[i,'团购日期']).days,2)
+                groupBuy_li.append((x,x2,y,color,leader,fill))
+                category.append(df.loc[i,'团品'])
+                y = y + 1
     t_max = max(df['到货日期'])
     t_min = t_max+datetime.timedelta(days=-10)
     t_min = [t_min.month-1,t_min.day]
