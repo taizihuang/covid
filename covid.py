@@ -119,14 +119,14 @@ var chart = Highcharts.chart('container0', {
                 var ren = this.renderer,
                     colors = Highcharts.getOptions().colors;
                 // 横线
-                ren.path(['M', 0, 150, 'L', 380, 150])
+                ren.path(['M', 10, 150, 'L', 320, 150])
                     .attr({
                         'stroke-width': 2,
                         stroke: 'silver',
                         dashstyle: 'dash'
                     }).add();
                 // 竖线
-                ren.path(['M', 170, 50, 'L', 170, 250])
+                ren.path(['M', 170, 50, 'L', 170, 260])
                     .attr({
                         'stroke-width': 2,
                         stroke: 'silver',
@@ -197,7 +197,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(${num5}+'+'+${num6}, 170, 170)
+                ren.label(${num5}+'+'+${num6}, 170, 180)
                     .attr({
                         padding: 40,
                     })
