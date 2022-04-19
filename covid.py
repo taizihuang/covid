@@ -454,15 +454,21 @@ def genTimeline(df):
     });
     """)
     df_time = df.loc[df['目前确诊人数'] != '`'].copy()
-    df_time['确诊日期'] = pd.to_datetime(df_time['确诊日期']-365*70-18, utc=True, unit='d')
+    #df_time['确诊日期'] = pd.to_datetime(df_time['确诊日期']-365*70-18, utc=True, unit='d')
     with open('test.json','r',encoding='utf8') as f:
         t = json.loads(f.read())
     for i in df_time.index:
-        loc = df_time.loc[i,'确诊日期'].strftime('%m/%d')
-        if loc in t.keys():
-            t[loc] = t[loc]+';<br>{}确诊{}位'.format(df_time.loc[i,'楼栋'],df_time.loc[i,'目前确诊人数'])
-        else:
-            t[loc] = '{}确诊{}位'.format(df_time.loc[i,'楼栋'],df_time.loc[i,'目前确诊人数'])
+        # loc = df_time.loc[i,'确诊日期'].strftime('%m/%d')
+        info = df_time.loc[i,'确诊信息'].split(';')
+        for l in info:
+            l = l.split(' ')
+            while '' in l:
+                l.remove('')
+            loc = l[0].replace('2022/','0')
+            if loc in t.keys():
+                t[loc] = t[loc]+';<br>{}确诊{}'.format(df_time.loc[i,'楼栋'],l[1])
+            else:
+                t[loc] = '{}确诊{}'.format(df_time.loc[i,'楼栋'],l[1])
     time_li = []
     for i in t.keys():
         x = [int(i.split('/')[0])-1,int(i.split('/')[1])]
