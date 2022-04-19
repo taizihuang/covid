@@ -126,7 +126,7 @@ var chart = Highcharts.chart('container0', {
                         dashstyle: 'dash'
                     }).add();
                 // 竖线
-                ren.path(['M', 180, 50, 'L', 180, 250])
+                ren.path(['M', 170, 50, 'L', 170, 250])
                     .attr({
                         'stroke-width': 2,
                         stroke: 'silver',
@@ -151,7 +151,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('已确诊总人数', 220, 50)
+                ren.label('已确诊总人数', 210, 50)
                     .attr({
                         fill: 'red',
                         stroke: 'white',
@@ -161,7 +161,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(${num2}, 210, 50)
+                ren.label(${num2}, 200, 50)
                     .attr({
                         padding: 40,
                     })
@@ -169,7 +169,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('待转运人数（确诊+密接）', 20, 170)
+                ren.label('待转运人数<br>确诊+密接', 55, 170)
                     .attr({
                         fill: 'orange',
                         stroke: 'white',
@@ -179,7 +179,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(${num3}+'+'+${num4}, 5, 170)
+                ren.label(${num3}+'+'+${num4}, 5, 180)
                     .attr({
                         padding: 40,
                     })
@@ -187,7 +187,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('已转运总人数（确诊+密接）', 190, 170)
+                ren.label('已转运总人数<br>确诊+密接', 210, 170)
                     .attr({
                         fill: 'green',
                         stroke: 'white',
@@ -197,7 +197,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(${num5}+'+'+${num6}, 180, 170)
+                ren.label(${num5}+'+'+${num6}, 170, 170)
                     .attr({
                         padding: 40,
                     })
@@ -232,7 +232,7 @@ def genCovid(df):
             type: 'tilemap',
             inverted: true,
             height: '90%',
-            marginLeft: 30,
+            marginLeft: 40,
         },
         title: {
             text: '<b>确诊地图</b>',
@@ -494,6 +494,7 @@ def genGroupbuy(df):
             type: 'xrange',
             panning: true,
             pinchType: 'x',
+            height: ${height}
         },
         title: {
             text: '<b>团购清单</b>',
@@ -566,7 +567,7 @@ def genGroupbuy(df):
     t_min = [t_min.month-1,t_min.day]
     t_max = [t_max.month-1,t_max.day+1]
     with open('groupbuy.js','w',encoding='utf8') as f:
-            f.write(groupBuy.render(groupBuy_li=groupBuy_li,category=category,t_min=t_min,t_max=t_max))
+            f.write(groupBuy.render(groupBuy_li=groupBuy_li,category=category,t_min=t_min,t_max=t_max,height=70*len(category))
 
 os.environ['TZ'] = 'Asia/Shanghai'
 time.tzset()
