@@ -37,6 +37,7 @@ def genHTML():
         <script src="timeline.js"></script>
         <div id="container2"></div>
         <script src="groupbuy.js"></script>
+        <img style="display: block;margin: auto;width:100px;height:120px;padding-top:20px" src="qr.jpg">
     </body>
 
     </html>
