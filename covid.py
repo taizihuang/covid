@@ -103,7 +103,7 @@ def fetchSheet2(tab='m7ohzm',start=0):
             row_list.append(s)
         data_list.append(row_list)
     df = pd.DataFrame(columns=data_list[0],data=data_list[1:])
-    df = df.loc[(df2['团长'] !='`') & (df['团长'] !='')]
+    df = df.loc[(df['团长'] !='`') & (df['团长'] !='')]
     df['团购日期'] = pd.to_datetime(df['团购日期']-365*70-18, unit='d')
     df['到货日期'] = pd.to_datetime(df['到货日期']-365*70-18, unit='d')
     return df
