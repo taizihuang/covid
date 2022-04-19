@@ -1,24 +1,24 @@
 #container0 {
     width: 90%;
     height: 300px;
-    margin: 10 auto;
+    margin: auto;
 }
 
 #container {
     width: 90%;
     height: 90%;
-    margin: 10 auto;
+    margin: auto;
 }
 
 #container1 {
     width: 90%;
     height: 200px;
-    ;
+    margin: auto;
 }
 
 #container2 {
     width: 90%;
-    margin: 10 auto;
+    margin: auto;
 }
 
 .highcharts-exporting-group,
@@ -28,6 +28,7 @@
 
 h2,
 p {
+    text-align: center;
     padding-left: 10px;
 }
 
