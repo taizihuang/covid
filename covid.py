@@ -566,7 +566,7 @@ def genGroupbuy(df):
     t_min = [t_min.month-1,t_min.day]
     t_max = [t_max.month-1,t_max.day+1]
     with open('groupbuy.js','w',encoding='utf8') as f:
-            f.write(groupBuy.render(groupBuy_li=groupBuy_li,category=list(df['团品']),t_min=t_min,t_max=t_max))
+            f.write(groupBuy.render(groupBuy_li=groupBuy_li,category=category,t_min=t_min,t_max=t_max))
 
 os.environ['TZ'] = 'Asia/Shanghai'
 time.tzset()
