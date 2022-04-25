@@ -8,21 +8,21 @@ var chart = Highcharts.chart('container0', {
                 var ren = this.renderer,
                     colors = Highcharts.getOptions().colors;
                 // 横线
-                ren.path(['M', 0, 150, 'L', 380, 150])
+                ren.path(['M', 10, 150, 'L', 320, 150])
                     .attr({
                         'stroke-width': 2,
                         stroke: 'silver',
                         dashstyle: 'dash'
                     }).add();
                 // 竖线
-                ren.path(['M', 180, 50, 'L', 180, 250])
+                ren.path(['M', 170, 50, 'L', 170, 260])
                     .attr({
                         'stroke-width': 2,
                         stroke: 'silver',
                         dashstyle: 'dash'
                     }).add();
                 // Headers
-                ren.label('待复核核酸总人数<br/>', 40, 50)
+                ren.label('返回居家人数<br/>', 40, 50)
                     .attr({
                         fill: 'blue',
                         stroke: 'white',
@@ -32,7 +32,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(0, 40, 50)
+                ren.label(6, 40, 50)
                     .attr({
                         padding: 40,
                     })
@@ -40,7 +40,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('已确诊总人数', 220, 50)
+                ren.label('已确诊总人数', 210, 50)
                     .attr({
                         fill: 'red',
                         stroke: 'white',
@@ -50,7 +50,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(5, 210, 50)
+                ren.label(5, 200, 50)
                     .attr({
                         padding: 40,
                     })
@@ -58,7 +58,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('待转运人数（确诊+密接）', 20, 170)
+                ren.label('待转运人数<br>确诊+密接', 55, 170)
                     .attr({
                         fill: 'orange',
                         stroke: 'white',
@@ -68,7 +68,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(0+'+'+12, 5, 170)
+                ren.label(0+'+'+0, 5, 180)
                     .attr({
                         padding: 40,
                     })
@@ -76,7 +76,7 @@ var chart = Highcharts.chart('container0', {
                         fontWeight: 'bold',
                         fontSize: 40,
                     }).add();
-                ren.label('已转运总人数（确诊+密接）', 190, 170)
+                ren.label('已转运总人数<br>确诊+密接', 210, 170)
                     .attr({
                         fill: 'green',
                         stroke: 'white',
@@ -86,7 +86,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(5+'+'+2, 180, 170)
+                ren.label(5+'+'+6, 170, 180)
                     .attr({
                         padding: 40,
                     })

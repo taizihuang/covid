@@ -133,7 +133,7 @@ var chart = Highcharts.chart('container0', {
                         dashstyle: 'dash'
                     }).add();
                 // Headers
-                ren.label('待复核核酸总人数<br/>', 40, 50)
+                ren.label('返回居家人数<br/>', 40, 50)
                     .attr({
                         fill: 'blue',
                         stroke: 'white',
@@ -217,7 +217,18 @@ var chart = Highcharts.chart('container0', {
     }
 });
 """)
-    num1 = df['目前在小区内等待核酸复核人数'].replace('`',0).replace('NA',0).sum()
+    df_time = df.loc[df['返回信息'] != '`'].copy()
+    num1 = 0
+    for i in df_time.index:
+        info = df_time.loc[i,'返回信息'].split(';')
+        for l in info:
+            l = l.split(' ')
+            while '' in l:
+                l.remove('')
+            loc = pd.to_datetime(l[0],format='%Y/%m/%d')+datetime.timedelta(days=int(l[2][0:-1]))
+            if loc > datetime.datetime.now():
+                num1 = num1 + int(l[1][0:-1])
+
     num2 = df['目前确诊人数'].replace('`',0).replace('NA').sum()
     num3 = df['确诊待转运'].replace('`',0).replace('NA').sum()
     num4 = df['密接待转运人数'].replace('`',0).replace('NA').sum()
@@ -380,7 +391,7 @@ def genCovid(df):
     for i in range(13):
         value_dict[str(i)] = 0
         desc_dict[str(i)] = ' '
-    for i in df.loc[df['目前确诊人数'] != '`'].index:
+    for i in df.loc[(df['目前确诊人数'] != '`')&(df['目前确诊人数'] != 0)].index:
         loc = df.loc[i,'楼栋'].split('-')
         value_dict[loc[0]] = value_dict[loc[0]] + df.loc[i,'目前确诊人数']
         desc_dict[loc[0]] = desc_dict[loc[0]] + '<br>'+loc[1]+'（{}人，已转运{}人）；'.format(df.loc[i,'目前确诊人数'],df.loc[i,'确诊已转运人数'])
@@ -455,7 +466,7 @@ def genTimeline(df):
         c.xAxis[0].setExtremes(Date.UTC(2022, ${t_min[0]}, ${t_min[1]}), Date.UTC(2022, ${t_max[0]}, ${t_max[1]-1}));
     });
     """)
-    df_time = df.loc[df['目前确诊人数'] != '`'].copy()
+    df_time = df.loc[df['确诊信息'] != '`'].copy()
     #df_time['确诊日期'] = pd.to_datetime(df_time['确诊日期']-365*70-18, utc=True, unit='d')
     with open('test.json','r',encoding='utf8') as f:
         t = json.loads(f.read())

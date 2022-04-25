@@ -4,7 +4,7 @@
             type: 'tilemap',
             inverted: true,
             height: '90%',
-            marginLeft: 30,
+            marginLeft: 40,
         },
         title: {
             text: '<b>确诊地图</b>',
@@ -109,8 +109,8 @@
                 region: 'West',
                 x: 2,
                 y: 3,
-                value: 4,
-                'desc': " <br>401（3人，已转运3人）；<br>502（1人，已转运1人）；"
+                value: 2,
+                'desc': " <br>401（2人，已转运2人）；"
             }, {
                 'hc-a2': '5',
                 name: '5',
@@ -125,8 +125,8 @@
                 region: 'West',
                 x: 3,
                 y: 2,
-                value: 1,
-                'desc': " <br>502（1人，已转运1人）；"
+                value: 3,
+                'desc': " <br>502（3人，已转运3人）；"
             }, {
                 'hc-a2': '3',
                 name: '3',

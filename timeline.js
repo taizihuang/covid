@@ -59,28 +59,63 @@
                 color: "black",
             },
                 {
+                x: Date.UTC(2022, 3, 18),
+                name: "全员核酸",
+                label: "全员核酸",
+                description: "",
+                color: "black",
+            },
+                {
+                x: Date.UTC(2022, 3, 20),
+                name: "全员核酸",
+                label: "全员核酸",
+                description: "",
+                color: "black",
+            },
+                {
+                x: Date.UTC(2022, 3, 21),
+                name: "全员核酸",
+                label: "全员核酸",
+                description: "",
+                color: "black",
+            },
+                {
+                x: Date.UTC(2022, 3, 24),
+                name: "全员核酸",
+                label: "全员核酸",
+                description: "",
+                color: "black",
+            },
+                {
                 x: Date.UTC(2022, 3, 14),
-                name: "4-502确诊1位",
-                label: "4-502确诊1位",
+                name: "4-502确诊1人",
+                label: "4-502确诊1人",
+                description: "",
+                color: "red",
+            },
+                {
+                x: Date.UTC(2022, 3, 19),
+                name: "4-502确诊2人",
+                label: "4-502确诊2人",
                 description: "",
                 color: "red",
             },
                 {
                 x: Date.UTC(2022, 3, 10),
-                name: "6-401确诊3位",
-                label: "6-401确诊3位",
+                name: "6-401确诊3人",
+                label: "6-401确诊3人",
                 description: "",
                 color: "red",
             },
                 {
                 x: Date.UTC(2022, 3, 17),
-                name: "6-502确诊1位",
-                label: "6-502确诊1位",
+                name: "6-502确诊1人",
+                label: "6-502确诊1人",
                 description: "",
                 color: "red",
             },
             {
-                x: Date.UTC(2022, 3, 18),
+                x: Date.UTC(2022, 3, 26),
                 name: ' ',
                 label: ' ',
                 description: "",
@@ -89,6 +124,6 @@
         }]
     }, function(c) {
         // 动态改变 x 轴范围即可实现拖动
-        c.xAxis[0].setExtremes(Date.UTC(2022, 3, 12), Date.UTC(2022, 3, 17));
+        c.xAxis[0].setExtremes(Date.UTC(2022, 3, 20), Date.UTC(2022, 3, 25));
     });
     
