@@ -143,7 +143,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(${num1}, 40, 50)
+                ren.label(${num1}, 30, 50)
                     .attr({
                         padding: 40,
                     })
