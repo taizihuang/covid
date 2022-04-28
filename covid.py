@@ -3,7 +3,23 @@ import pandas as pd
 from mako.template import Template
 
 
-def genHTML():
+def genHTML(df):
+
+    df_time = df.loc[df['返回信息'] != '`'].copy()
+    return_list = []
+    for i in df_time.index:
+        info = df_time.loc[i,'返回信息'].split(';')
+        for l in info:
+            l = l.split(' ')
+            while '' in l:
+                l.remove('')
+            loc = pd.to_datetime(l[0],format='%Y/%m/%d')+datetime.timedelta(days=int(l[2][0:-1]))
+            if loc > datetime.datetime.now():
+                return_list.append('{}: {}（{} 解封）'.format(df_time.loc[i,'楼栋'],l[1],loc.strftime('%m-%d')))
+    r = ''
+    for ret in return_list:
+        r = r+'<p>'+ret+'</p>'
+
     s = """
     <!DOCTYPE HTML>
     <html>
@@ -28,7 +44,8 @@ def genHTML():
     <body>
         <title>593弄公告板</title>
         <h2>593弄公告板</h2>
-        <p class="notice">重要信息：暂无（<span style="color:red">{} 更新</span>）</p>
+        <p class="notice"><span style="color:red">{} 更新</span></p>
+        {}
         <div id="container0"></div>
         <script src="dimension.js"></script>
         <div id="container"></div>
@@ -41,7 +58,7 @@ def genHTML():
     </body>
 
     </html>
-    """.format(datetime.datetime.now().strftime('%m/%d %H:%M'))
+    """.format(datetime.datetime.now().strftime('%m/%d %H:%M'),r)
     with open('index.html','w',encoding='utf8') as f:
         f.write(s)
 def fetchData(tab='BB08J2',start=0,n=20):
@@ -588,4 +605,4 @@ genCovid(df1)
 genDimension(df1)
 genTimeline(df1)
 genGroupbuy(df2)
-genHTML()
+genHTML(df1)

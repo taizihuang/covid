@@ -32,7 +32,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(6, 40, 50)
+                ren.label(7, 30, 50)
                     .attr({
                         padding: 40,
                     })
@@ -50,7 +50,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(5, 200, 50)
+                ren.label(6, 200, 50)
                     .attr({
                         padding: 40,
                     })
@@ -86,7 +86,7 @@ var chart = Highcharts.chart('container0', {
                     }).css({
                         color: 'white'
                     }).add().shadow(true);
-                ren.label(5+'+'+6, 170, 180)
+                ren.label(6+'+'+2, 170, 180)
                     .attr({
                         padding: 40,
                     })
